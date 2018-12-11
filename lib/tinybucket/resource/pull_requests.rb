@@ -10,10 +10,12 @@ module Tinybucket
 
       # Create a new pull request.
       #
-      # @todo to be implemented.
-      # @raise [NotImplementedError] to be implemented.
-      def create(_options)
-        raise NotImplementedError
+      # @param options [Hash]
+      # @return [Tinybucket::Model::PullRequest]
+      def create(options)
+        pull_requests_api.create(options).tap do |m|
+          inject_repo_keys(m, @repo.repo_keys)
+        end
       end
 
       # Get the specific pull request on the repository.

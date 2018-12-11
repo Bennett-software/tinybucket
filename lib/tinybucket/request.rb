@@ -40,6 +40,7 @@ module Tinybucket
         when :post, :put, :patch
           request.path = path
           request.body = extract_data_from_params(params) unless params.empty?
+          request.headers['Content-Type'] = 'application/json'
         else
           raise ArgumentError, 'unknown http method: ' + method
         end
@@ -49,11 +50,12 @@ module Tinybucket
     end
 
     def extract_data_from_params(params)
-      if params.key?('data') && !params['data'].nil?
+      data = if params.key?('data') && !params['data'].nil?
         params['data']
       else
         params
       end
+      data.to_json
     end
   end
 end
