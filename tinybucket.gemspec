@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'tinybucket/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'tinybucket'
+  spec.name          = 'tb-bjb'
   spec.version       = Tinybucket::VERSION
   spec.authors       = ['hirakiuc']
   spec.email         = ['hirakiuc@gmail.com']
