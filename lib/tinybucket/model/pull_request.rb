@@ -63,8 +63,8 @@ module Tinybucket
       # @return
       def update(attrs = {})
         update_attrs = [ :title, :description, :reviewers ]
-        self.attributes.merge(attrs.slice(update_attrs))
-        pull_request_api.update(id, self.attributes.slice(update_attrs))
+        self.attributes.merge!(attrs.slice(*update_attrs))
+        pull_request_api.update(id, self.attributes.slice(*update_attrs))
       end
 
       # Decline or reject this pull request.
