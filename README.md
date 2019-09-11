@@ -333,10 +333,10 @@ patch = repo.patch(COMMIT_ID)
 ```ruby
 repo = bucket.repo('someone', 'great_repo')
 
-# [x ] GET a list of hooks
+# [x] GET a list of hooks
 hooks = repo.hooks(options)
 
-# [ ] POST a specific hook
+# [x] POST a specific hook
 hook = repo.hooks.create(params)
 ```
 
