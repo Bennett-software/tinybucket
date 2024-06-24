@@ -12,6 +12,15 @@ module Tinybucket
           base_path
         end
 
+        def path_to_create
+          base_path
+        end
+
+        def path_to_update(pr_id)
+          build_path(base_path,
+                     [pr_id, 'pullrequest_id'])
+        end
+
         def path_to_find(pr_id)
           build_path(base_path,
                      [pr_id, 'pullrequest_id'])

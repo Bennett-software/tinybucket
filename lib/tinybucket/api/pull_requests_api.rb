@@ -28,6 +28,28 @@ module Tinybucket
         )
       end
 
+      # Send 'POST a specific pull request' request
+      #
+      # @param attrs [Hash]
+      # @return [true]
+      def create(attrs)
+        post_path(
+          path_to_create,
+          attrs,
+          get_parser(:object, Tinybucket::Model::PullRequest)
+        )
+      end
+
+      # Send 'PUT a specific pull request' request
+      #
+      # @param pr_id [String] The pull request identifier
+      # @param options [Hash]
+      # @return [true]
+      def update(pr_id, options = {})
+        put_path(path_to_update(pr_id), options)
+        true
+      end
+
       # Send 'GET a specific pull request' request
       #
       # @param pr_id [String] The pull request identifier

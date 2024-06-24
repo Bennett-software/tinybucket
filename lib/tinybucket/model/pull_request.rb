@@ -59,10 +59,12 @@ module Tinybucket
 
       # Update this pull request.
       #
-      # @todo to be implemented.
-      # @raise [NotImplementedError] to be implemented.
-      def update(_params)
-        raise NotImplementedError
+      # @param attrs [Hash] Attributes to be updated. Only :title, :description, :reviewers supported
+      # @return
+      def update(attrs = {})
+        update_attrs = [ :title, :description, :reviewers ]
+        self.attributes.merge!(attrs.slice(*update_attrs))
+        pull_request_api.update(id, self.attributes.slice(*update_attrs))
       end
 
       # Decline or reject this pull request.
